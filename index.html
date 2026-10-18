@@ -1,0 +1,3073 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>IQ Challenge - 50 Soal</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    min-height:100vh;
+    font-family:Arial,Helvetica,sans-serif;
+    color:#fff;
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(255,255,255,.08),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 85% 80%,
+            rgba(255,255,255,.06),
+            transparent 25%
+        ),
+        #050505;
+    overflow-x:hidden;
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    opacity:.25;
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,.025) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.025) 1px,
+            transparent 1px
+        );
+    background-size:35px 35px;
+    z-index:-1;
+}
+
+/* =========================
+   ANIMATION
+========================= */
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(30px) scale(.97);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+@keyframes fadeRight{
+    from{
+        opacity:0;
+        transform:translateX(30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+}
+
+@keyframes pulse{
+    0%,100%{
+        box-shadow:0 0 0 rgba(255,255,255,0);
+    }
+
+    50%{
+        box-shadow:0 0 35px rgba(255,255,255,.12);
+    }
+}
+
+@keyframes float{
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-6px);
+    }
+}
+
+@keyframes shine{
+    0%{
+        transform:translateX(-150%);
+    }
+
+    100%{
+        transform:translateX(150%);
+    }
+}
+
+@keyframes gradientMove{
+    0%{
+        background-position:0% center;
+    }
+
+    100%{
+        background-position:200% center;
+    }
+}
+
+@keyframes danger{
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.06);
+    }
+}
+
+.fade-page{
+    animation:fadeUp .6s ease;
+}
+
+.question-animation{
+    animation:fadeRight .4s ease;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.header{
+    position:sticky;
+    top:0;
+    z-index:100;
+    height:72px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 30px;
+    background:rgba(5,5,5,.82);
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid #222;
+}
+
+.logo-area{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    cursor:pointer;
+}
+
+.logo{
+    width:43px;
+    height:43px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:13px;
+    background:#fff;
+    color:#000;
+    animation:float 3s ease-in-out infinite;
+}
+
+.logo-text{
+    font-size:18px;
+    font-weight:900;
+    letter-spacing:3px;
+}
+
+.logo-text span{
+    color:#777;
+}
+
+.user-badge{
+    display:none;
+    padding:9px 15px;
+    border-radius:999px;
+    background:#151515;
+    border:1px solid #333;
+    color:#ddd;
+    font-size:12px;
+}
+
+/* =========================
+   MAIN
+========================= */
+
+main{
+    width:100%;
+    max-width:900px;
+    margin:auto;
+    padding:55px 20px;
+}
+
+.card{
+    position:relative;
+    overflow:hidden;
+    background:rgba(17,17,17,.9);
+    border:1px solid #292929;
+    border-radius:30px;
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.5),
+        inset 0 1px 0 rgba(255,255,255,.03);
+}
+
+.card::before{
+    content:"";
+    position:absolute;
+    width:250px;
+    height:100%;
+    left:-300px;
+    top:0;
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.05),
+        transparent
+    );
+    transform:skewX(-15deg);
+    pointer-events:none;
+}
+
+.card:hover::before{
+    animation:shine 1.2s ease;
+}
+
+/* =========================
+   LANDING
+========================= */
+
+#landingPage{
+    padding:55px;
+    text-align:center;
+}
+
+.badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:8px 14px;
+    border-radius:999px;
+    background:#1d1d1d;
+    border:1px solid #333;
+    color:#bbb;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:.8px;
+}
+
+.hero-title{
+    margin:22px 0 12px;
+    font-size:clamp(40px,7vw,70px);
+    line-height:.95;
+    font-weight:1000;
+    letter-spacing:-3px;
+
+    background:
+        linear-gradient(
+            120deg,
+            #fff,
+            #777,
+            #fff
+        );
+
+    background-size:200% auto;
+
+    -webkit-background-clip:text;
+    background-clip:text;
+
+    color:transparent;
+
+    animation:gradientMove 4s linear infinite;
+}
+
+.subtitle{
+    max-width:650px;
+    margin:auto;
+    color:#888;
+    line-height:1.8;
+    font-size:14px;
+}
+
+.input-box{
+    margin-top:35px;
+    padding:22px;
+    background:#0c0c0c;
+    border:1px solid #292929;
+    border-radius:20px;
+    text-align:left;
+}
+
+.input-label{
+    display:block;
+    margin-bottom:9px;
+    color:#aaa;
+    font-size:11px;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:1px;
+}
+
+.name-input{
+    width:100%;
+    padding:15px 16px;
+    border-radius:13px;
+    border:1px solid #333;
+    outline:none;
+    background:#151515;
+    color:white;
+    transition:.25s;
+}
+
+.name-input:focus{
+    border-color:white;
+    box-shadow:0 0 0 4px rgba(255,255,255,.06);
+}
+
+.info-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+    margin-top:18px;
+}
+
+.info-item{
+    padding:14px;
+    background:#111;
+    border:1px solid #252525;
+    border-radius:14px;
+    color:#888;
+    font-size:12px;
+}
+
+.info-item strong{
+    display:block;
+    margin-bottom:3px;
+    color:white;
+    font-size:16px;
+}
+
+.start-button{
+    width:100%;
+    margin-top:20px;
+    padding:17px;
+    border:0;
+    border-radius:15px;
+    background:white;
+    color:black;
+    font-weight:900;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.start-button:hover{
+    transform:translateY(-3px);
+    box-shadow:0 12px 35px rgba(255,255,255,.13);
+}
+
+/* =========================
+   QUIZ
+========================= */
+
+#quizPage{
+    padding:30px;
+}
+
+.quiz-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+    padding-bottom:20px;
+    border-bottom:1px solid #252525;
+}
+
+.category{
+    display:inline-block;
+    padding:7px 12px;
+    border-radius:999px;
+    background:white;
+    color:black;
+    font-size:10px;
+    font-weight:900;
+    text-transform:uppercase;
+}
+
+.difficulty{
+    display:inline-block;
+    margin-left:7px;
+    padding:7px 12px;
+    border-radius:999px;
+    background:#181818;
+    border:1px solid #333;
+    color:#aaa;
+    font-size:10px;
+    font-weight:900;
+}
+
+.question-number{
+    margin-top:8px;
+    color:#777;
+    font-size:12px;
+}
+
+.timer{
+    min-width:105px;
+    padding:11px 14px;
+    border-radius:14px;
+    background:#111;
+    border:1px solid #333;
+    text-align:center;
+    font-family:monospace;
+    font-size:17px;
+    font-weight:900;
+}
+
+.timer.warning{
+    color:#ffcc55;
+    border-color:#8c7020;
+    animation:danger .8s infinite;
+}
+
+.timer.danger{
+    color:#ff4d6d;
+    background:#36121b;
+    border-color:#ff365c;
+    animation:danger .5s infinite;
+}
+
+.progress-container{
+    margin:22px 0 30px;
+}
+
+.progress-info{
+    display:flex;
+    justify-content:space-between;
+    color:#666;
+    font-size:10px;
+    margin-bottom:8px;
+}
+
+.progress-track{
+    height:8px;
+    background:#111;
+    border:1px solid #292929;
+    border-radius:999px;
+    overflow:hidden;
+}
+
+.progress-bar{
+    height:100%;
+    width:2%;
+    background:
+        linear-gradient(
+            90deg,
+            #fff,
+            #777,
+            #fff
+        );
+    background-size:200% 100%;
+    border-radius:999px;
+    transition:width .5s ease;
+    animation:gradientMove 2s linear infinite;
+}
+
+.question-title{
+    margin:0 0 25px;
+    font-size:21px;
+    line-height:1.55;
+}
+
+.options{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.option{
+    width:100%;
+    padding:17px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+    border:1px solid #303030;
+    border-radius:16px;
+    background:#0e0e0e;
+    color:#ccc;
+    text-align:left;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.option:hover{
+    transform:translateX(6px);
+    border-color:#777;
+    background:#161616;
+}
+
+.option.selected{
+    color:white;
+    border-color:white;
+    background:#202020;
+    box-shadow:
+        0 0 0 3px rgba(255,255,255,.05),
+        0 8px 30px rgba(255,255,255,.04);
+}
+
+.option-left{
+    display:flex;
+    align-items:center;
+    gap:13px;
+}
+
+.option-letter{
+    width:32px;
+    height:32px;
+    flex-shrink:0;
+    border-radius:10px;
+    border:1px solid #333;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:12px;
+    font-weight:900;
+    background:#171717;
+}
+
+.selected .option-letter{
+    background:white;
+    color:black;
+}
+
+.radio{
+    width:18px;
+    height:18px;
+    border-radius:50%;
+    border:1px solid #666;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.selected .radio{
+    border-color:white;
+    background:white;
+    color:black;
+}
+
+.quiz-footer{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+    margin-top:30px;
+    padding-top:20px;
+    border-top:1px solid #252525;
+}
+
+.nav-button{
+    padding:12px 17px;
+    border-radius:13px;
+    border:1px solid #333;
+    background:#181818;
+    color:white;
+    font-weight:700;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.nav-button:hover:not(:disabled){
+    background:#292929;
+    transform:translateY(-2px);
+}
+
+.nav-button.primary{
+    background:white;
+    color:black;
+    border-color:white;
+}
+
+.nav-button:disabled{
+    opacity:.25;
+    cursor:not-allowed;
+}
+
+/* =========================
+   RESULT
+========================= */
+
+#resultPage{
+    padding:45px;
+    text-align:center;
+}
+
+.score-ring{
+    position:relative;
+    width:220px;
+    height:220px;
+    margin:30px auto;
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:
+        radial-gradient(
+            circle,
+            #101010 57%,
+            transparent 58%
+        ),
+        conic-gradient(
+            white var(--score-angle),
+            #242424 var(--score-angle)
+        );
+
+    animation:pulse 2s infinite;
+}
+
+.score-inner{
+    position:absolute;
+    inset:13px;
+    border-radius:50%;
+    background:#101010;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+}
+
+.score-number{
+    font-size:58px;
+    font-weight:1000;
+}
+
+.score-label{
+    color:#777;
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:2px;
+}
+
+.result-title{
+    font-size:30px;
+    font-weight:1000;
+}
+
+.result-desc{
+    max-width:600px;
+    margin:15px auto 25px;
+    color:#888;
+    line-height:1.7;
+    font-size:13px;
+}
+
+.stats{
+    max-width:600px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+}
+
+.stat{
+    padding:18px;
+    border:1px solid #2b2b2b;
+    border-radius:16px;
+    background:#0d0d0d;
+}
+
+.stat small{
+    display:block;
+    color:#777;
+    margin-bottom:6px;
+}
+
+.stat strong{
+    font-size:25px;
+}
+
+.analysis{
+    max-width:650px;
+    margin:20px auto;
+    padding:20px;
+    border:1px solid #292929;
+    border-radius:18px;
+    background:#0d0d0d;
+    text-align:left;
+}
+
+.analysis-title{
+    margin-bottom:14px;
+    font-weight:900;
+}
+
+.analysis-row{
+    margin-bottom:13px;
+}
+
+.analysis-top{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:6px;
+    color:#aaa;
+    font-size:11px;
+}
+
+.analysis-track{
+    height:7px;
+    background:#222;
+    border-radius:999px;
+    overflow:hidden;
+}
+
+.analysis-bar{
+    height:100%;
+    background:white;
+    border-radius:999px;
+    transition:width 1s ease;
+}
+
+.result-actions{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:30px;
+}
+
+/* =========================
+   MODAL
+========================= */
+
+.modal{
+    position:fixed;
+    inset:0;
+    z-index:200;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    background:rgba(0,0,0,.86);
+    backdrop-filter:blur(12px);
+}
+
+.modal.show{
+    display:flex;
+}
+
+.modal-box{
+    width:100%;
+    max-width:800px;
+    max-height:85vh;
+    overflow-y:auto;
+    padding:25px;
+    border:1px solid #333;
+    border-radius:24px;
+    background:#101010;
+    animation:fadeUp .4s ease;
+}
+
+.review-card{
+    margin-bottom:15px;
+    padding:18px;
+    border:1px solid #292929;
+    border-radius:17px;
+    background:#0c0c0c;
+}
+
+.review-card h4{
+    margin:10px 0 14px;
+    line-height:1.5;
+}
+
+.review-option{
+    padding:9px 12px;
+    margin:5px 0;
+    border-radius:9px;
+    background:#151515;
+    color:#999;
+    font-size:12px;
+}
+
+.review-option.correct{
+    border:1px solid white;
+    color:white;
+}
+
+.review-option.wrong{
+    border:1px solid #8b273c;
+    color:#ff8ca3;
+}
+
+.explanation{
+    margin-top:12px;
+    padding:12px;
+    border-radius:12px;
+    background:#181818;
+    color:#aaa;
+    font-size:12px;
+    line-height:1.6;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    padding:25px;
+    text-align:center;
+    border-top:1px solid #222;
+    color:#555;
+    font-size:11px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:650px){
+
+    .header{
+        padding:0 15px;
+    }
+
+    .logo-text{
+        font-size:14px;
+    }
+
+    main{
+        padding:25px 12px;
+    }
+
+    #landingPage,
+    #resultPage{
+        padding:30px 20px;
+    }
+
+    #quizPage{
+        padding:20px 15px;
+    }
+
+    .quiz-top{
+        align-items:flex-start;
+    }
+
+    .question-title{
+        font-size:18px;
+    }
+
+    .info-grid,
+    .stats{
+        grid-template-columns:1fr;
+    }
+
+    .score-ring{
+        width:190px;
+        height:190px;
+    }
+
+    .score-number{
+        font-size:48px;
+    }
+
+    .quiz-footer{
+        gap:10px;
+    }
+
+    .nav-button{
+        padding:11px 12px;
+        font-size:12px;
+    }
+
+    .difficulty{
+        display:block;
+        width:max-content;
+        margin:7px 0 0;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header class="header">
+
+    <div class="logo-area" onclick="goHome()">
+
+        <div class="logo">
+            <i class="fa-solid fa-brain"></i>
+        </div>
+
+        <div class="logo-text">
+            IQ <span>CHALLENGE</span>
+        </div>
+
+    </div>
+
+    <div id="userBadge" class="user-badge">
+
+        <i class="fa-solid fa-user"></i>
+
+        <span id="headerName">
+            Peserta
+        </span>
+
+    </div>
+
+</header>
+
+
+<main>
+
+<!-- =====================================================
+     LANDING
+===================================================== -->
+
+<section id="landingPage"
+class="card fade-page">
+
+    <div class="badge">
+
+        <i class="fa-solid fa-bolt"></i>
+
+        50 SOAL • 30 MENIT
+
+    </div>
+
+
+    <h1 class="hero-title">
+
+        IQ CHALLENGE
+
+    </h1>
+
+
+    <p class="subtitle">
+
+        Uji penalaran numerik, verbal, logika,
+        pola, dan spasial melalui 50 soal
+        dengan sistem penilaian berbasis tingkat
+        kesulitan.
+
+    </p>
+
+
+    <div class="input-box">
+
+        <label class="input-label">
+
+            Nama Lengkap Peserta
+
+        </label>
+
+
+        <input
+        id="nameInput"
+        class="name-input"
+        type="text"
+        placeholder="Masukkan nama kamu..."
+        >
+
+
+        <div
+        id="nameError"
+        style="
+        display:none;
+        color:#ff5d79;
+        font-size:11px;
+        margin-top:8px;
+        ">
+
+            Nama harus diisi terlebih dahulu.
+
+        </div>
+
+
+        <div class="info-grid">
+
+            <div class="info-item">
+
+                <strong>50</strong>
+
+                Pertanyaan
+
+            </div>
+
+
+            <div class="info-item">
+
+                <strong>30:00</strong>
+
+                Waktu Total
+
+            </div>
+
+
+            <div class="info-item">
+
+                <strong>Easy → Hard</strong>
+
+                Kesulitan
+
+            </div>
+
+
+            <div class="info-item">
+
+                <strong>70–140</strong>
+
+                Estimasi IQ
+
+            </div>
+
+        </div>
+
+
+        <button
+        class="start-button"
+        onclick="startTest()">
+
+            MULAI IQ CHALLENGE
+
+            <i class="fa-solid fa-arrow-right"></i>
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     QUIZ
+===================================================== -->
+
+<section
+id="quizPage"
+class="card"
+style="display:none;">
+
+    <div class="quiz-top">
+
+        <div>
+
+            <span
+            id="category"
+            class="category">
+
+                LOGIKA
+
+            </span>
+
+
+            <span
+            id="difficulty"
+            class="difficulty">
+
+                MEDIUM
+
+            </span>
+
+
+            <div class="question-number">
+
+                Soal
+
+                <b id="currentNumber">
+                    1
+                </b>
+
+                dari
+
+                <b id="totalNumber">
+                    50
+                </b>
+
+            </div>
+
+        </div>
+
+
+        <div
+        id="timer"
+        class="timer">
+
+            30:00
+
+        </div>
+
+    </div>
+
+
+    <div class="progress-container">
+
+        <div class="progress-info">
+
+            <span>
+                PROGRESS
+            </span>
+
+            <span id="progressPercent">
+                2%
+            </span>
+
+        </div>
+
+
+        <div class="progress-track">
+
+            <div
+            id="progressBar"
+            class="progress-bar">
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div
+    id="questionArea"
+    class="question-animation">
+
+        <h2
+        id="questionTitle"
+        class="question-title">
+
+            Memuat soal...
+
+        </h2>
+
+
+        <div
+        id="options"
+        class="options">
+
+        </div>
+
+    </div>
+
+
+    <div class="quiz-footer">
+
+        <button
+        id="prevButton"
+        class="nav-button"
+        onclick="previousQuestion()">
+
+            <i class="fa-solid fa-arrow-left"></i>
+
+            Sebelumnya
+
+        </button>
+
+
+        <button
+        id="nextButton"
+        class="nav-button primary"
+        onclick="nextQuestion()">
+
+            Selanjutnya
+
+            <i class="fa-solid fa-arrow-right"></i>
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     RESULT
+===================================================== -->
+
+<section
+id="resultPage"
+class="card"
+style="display:none;">
+
+    <div class="badge">
+
+        <i class="fa-solid fa-circle-check"></i>
+
+        CHALLENGE SELESAI
+
+    </div>
+
+
+    <h2 class="result-title">
+
+        Hasil IQ Challenge
+
+    </h2>
+
+
+    <p
+    id="resultName"
+    style="color:#777;font-size:13px;">
+
+        Peserta: -
+
+    </p>
+
+
+    <div
+    id="scoreRing"
+    class="score-ring"
+    style="--score-angle:0deg;">
+
+        <div class="score-inner">
+
+            <span class="score-label">
+
+                Estimasi IQ
+
+            </span>
+
+
+            <span
+            id="score"
+            class="score-number">
+
+                0
+
+            </span>
+
+
+            <span
+            id="categoryResult"
+            style="font-size:11px;color:#aaa;">
+
+                -
+
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <p
+    id="resultDescription"
+    class="result-desc">
+
+    </p>
+
+
+    <div class="stats">
+
+        <div class="stat">
+
+            <small>
+                BENAR
+            </small>
+
+            <strong id="correctStat">
+                0
+            </strong>
+
+        </div>
+
+
+        <div class="stat">
+
+            <small>
+                SALAH / KOSONG
+            </small>
+
+            <strong id="wrongStat">
+                0
+            </strong>
+
+        </div>
+
+
+        <div class="stat">
+
+            <small>
+                AKURASI
+            </small>
+
+            <strong id="accuracyStat">
+                0%
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <!-- ANALISIS -->
+
+    <div class="analysis">
+
+        <div class="analysis-title">
+
+            <i class="fa-solid fa-chart-simple"></i>
+
+            Analisis Kemampuan
+
+        </div>
+
+
+        <div id="analysisContainer">
+
+        </div>
+
+    </div>
+
+
+    <div
+    style="
+    max-width:600px;
+    margin:15px auto;
+    color:#555;
+    font-size:10px;
+    line-height:1.6;
+    ">
+
+        <i class="fa-solid fa-circle-info"></i>
+
+        Skor di atas adalah estimasi untuk aplikasi
+        latihan. Tes ini bukan pengganti tes IQ
+        psikometrik resmi yang menggunakan norma
+        populasi dan prosedur terstandar.
+
+    </div>
+
+
+    <div class="result-actions">
+
+        <button
+        class="nav-button"
+        onclick="openReview()">
+
+            <i class="fa-solid fa-book-open"></i>
+
+            Review 50 Soal
+
+        </button>
+
+
+        <button
+        class="nav-button primary"
+        onclick="restartTest()">
+
+            <i class="fa-solid fa-rotate-right"></i>
+
+            Ulangi Test
+
+        </button>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- =====================================================
+     REVIEW
+===================================================== -->
+
+<div
+id="reviewModal"
+class="modal">
+
+    <div class="modal-box">
+
+        <div
+        style="
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        margin-bottom:20px;
+        ">
+
+            <h3 style="margin:0;">
+
+                <i class="fa-solid fa-list-check"></i>
+
+                Review 50 Soal
+
+            </h3>
+
+
+            <button
+            class="nav-button"
+            onclick="closeReview()">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+        </div>
+
+
+        <div id="reviewContainer">
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<footer>
+
+    IQ Challenge • 50 Soal • 30 Menit
+
+    <br>
+
+    Buatan: Syailendra Naryama Putra
+    • Kelas 9.IT.5
+    • No. Absen 31
+
+</footer>
+
+
+<script>
+
+/* =====================================================
+   DATA SOAL
+=====================================================
+
+difficulty:
+easy   = 1 point
+medium = 2 points
+hard   = 3 points
+
+Bobot digunakan untuk sistem estimasi.
+===================================================== */
+
+const questions = [
+
+{
+category:"Deret Angka",
+difficulty:"easy",
+question:"Tentukan angka selanjutnya: 3, 6, 12, 24, 48, ...",
+options:["72","96","84","108"],
+answer:1,
+explanation:"Setiap angka dikalikan 2. Jadi 48 × 2 = 96."
+},
+
+{
+category:"Deret Angka",
+difficulty:"medium",
+question:"Tentukan angka selanjutnya: 5, 10, 20, 35, 55, ...",
+options:["75","80","85","90"],
+answer:1,
+explanation:"Selisihnya +5, +10, +15, +20, sehingga berikutnya +25. 55 + 25 = 80."
+},
+
+{
+category:"Deret Angka",
+difficulty:"medium",
+question:"Tentukan angka yang hilang: 2, 3, 5, 7, 11, ?, 17",
+options:["12","13","14","15"],
+answer:1,
+explanation:"Deret tersebut merupakan bilangan prima."
+},
+
+{
+category:"Deret Angka",
+difficulty:"easy",
+question:"Tentukan angka selanjutnya: 81, 27, 9, 3, ...",
+options:["0","1","1.5","2"],
+answer:1,
+explanation:"Setiap angka dibagi 3."
+},
+
+{
+category:"Deret Angka",
+difficulty:"easy",
+question:"Tentukan nilai selanjutnya: 1, 4, 9, 16, 25, ...",
+options:["30","35","36","49"],
+answer:2,
+explanation:"Pola kuadrat: 1², 2², 3², 4², 5². Berikutnya 6² = 36."
+},
+
+{
+category:"Deret Angka",
+difficulty:"medium",
+question:"Tentukan angka selanjutnya: 2, 4, 8, 14, 22, ...",
+options:["30","32","34","36"],
+answer:1,
+explanation:"Penambahannya +2, +4, +6, +8, +10. Jadi 22 + 10 = 32."
+},
+
+{
+category:"Analogi Verbal",
+difficulty:"easy",
+question:"Buku : Membaca = Pisau : ...",
+options:["Menulis","Memotong","Tajam","Dapur"],
+answer:1,
+explanation:"Buku digunakan untuk membaca, sedangkan pisau digunakan untuk memotong."
+},
+
+{
+category:"Analogi Verbal",
+difficulty:"easy",
+question:"Dokter : Rumah Sakit = Guru : ...",
+options:["Buku","Sekolah","Murid","Pelajaran"],
+answer:1,
+explanation:"Dokter bekerja di rumah sakit dan guru bekerja di sekolah."
+},
+
+{
+category:"Analogi Verbal",
+difficulty:"easy",
+question:"Haus : Air = Lapar : ...",
+options:["Tidur","Makan","Lelah","Puas"],
+answer:1,
+explanation:"Haus diatasi dengan air, sedangkan lapar diatasi dengan makan."
+},
+
+{
+category:"Analogi Verbal",
+difficulty:"easy",
+question:"Terbang : Burung = Berenang : ...",
+options:["Darat","Ikan","Air","Sayap"],
+answer:1,
+explanation:"Burung terbang dan ikan berenang."
+},
+
+{
+category:"Analogi Verbal",
+difficulty:"medium",
+question:"Cabang : Pohon = Jari : ...",
+options:["Kuku","Tangan","Kaki","Tubuh"],
+answer:1,
+explanation:"Cabang merupakan bagian pohon, sedangkan jari merupakan bagian tangan."
+},
+
+{
+category:"Analogi Verbal",
+difficulty:"easy",
+question:"Matahari : Siang = Bulan : ...",
+options:["Bintang","Malam","Terang","Langit"],
+answer:1,
+explanation:"Matahari identik dengan siang dan bulan identik dengan malam."
+},
+
+{
+category:"Penalaran Logika",
+difficulty:"easy",
+question:"Jika semua kucing suka ikan, dan Miki adalah seekor kucing, maka...",
+options:[
+"Miki tidak suka ikan",
+"Miki suka ikan",
+"Semua hewan suka ikan",
+"Miki adalah anjing"
+],
+answer:1,
+explanation:"Miki termasuk kucing, sehingga berdasarkan premis ia suka ikan."
+},
+
+{
+category:"Penalaran Logika",
+difficulty:"medium",
+question:"Beberapa seniman adalah musikus. Semua musikus adalah orang kreatif. Maka...",
+options:[
+"Semua seniman adalah orang kreatif",
+"Sebagian seniman adalah orang kreatif",
+"Tidak ada seniman yang kreatif",
+"Semua orang kreatif adalah seniman"
+],
+answer:1,
+explanation:"Seniman yang termasuk musikus juga termasuk orang kreatif."
+},
+
+{
+category:"Penalaran Logika",
+difficulty:"medium",
+question:"Jika hari ini hari Rabu, hari apakah 100 hari lagi?",
+options:["Kamis","Jumat","Sabtu","Minggu"],
+answer:1,
+explanation:"100 mod 7 = 2. Dua hari setelah Rabu adalah Jumat."
+},
+
+{
+category:"Penalaran Logika",
+difficulty:"medium",
+question:"Dalam suatu balapan, jika Anda mendahului orang di posisi kedua, sekarang posisi ke berapa Anda?",
+options:["Pertama","Kedua","Ketiga","Terakhir"],
+answer:1,
+explanation:"Anda mengambil posisi orang yang didahului, yaitu posisi kedua."
+},
+
+{
+category:"Penalaran Logika",
+difficulty:"easy",
+question:"Ayah Ani memiliki 4 anak perempuan: Nana, Nene, Nini, dan ... Siapa anak keempat?",
+options:["Nunu","Ani","Nona","Nina"],
+answer:1,
+explanation:"Nama Ani sudah disebutkan dalam kalimat."
+},
+
+{
+category:"Penalaran Logika",
+difficulty:"medium",
+question:"Jika kemarin lusa adalah hari Senin, hari apakah besok?",
+options:["Kamis","Rabu","Selasa","Jumat"],
+answer:0,
+explanation:"Kemarin lusa Senin → kemarin Selasa → hari ini Rabu → besok Kamis."
+},
+
+{
+category:"Matematika",
+difficulty:"easy",
+question:"Berapa nilai x jika 4x - 6 = 18?",
+options:["5","6","7","8"],
+answer:1,
+explanation:"4x = 24 sehingga x = 6."
+},
+
+{
+category:"Matematika",
+difficulty:"easy",
+question:"Berapa 15% dari 200?",
+options:["20","25","30","35"],
+answer:2,
+explanation:"15% × 200 = 30."
+},
+
+{
+category:"Matematika",
+difficulty:"hard",
+question:"3 kucing menangkap 3 tikus dalam 3 menit. Berapa menit yang dibutuhkan 100 kucing untuk menangkap 100 tikus dengan laju sama?",
+options:["1 menit","3 menit","30 menit","100 menit"],
+answer:1,
+explanation:"Setiap kucing menangkap satu tikus dalam 3 menit. Jadi 100 kucing dapat menangkap 100 tikus dalam 3 menit."
+},
+
+{
+category:"Matematika",
+difficulty:"medium",
+question:"Berapa angka berikutnya: √4, √9, √16, √25, ...",
+options:["√30","√36","√40","√49"],
+answer:1,
+explanation:"Bilangan di dalam akar adalah 4, 9, 16, 25, 36."
+},
+
+{
+category:"Matematika",
+difficulty:"medium",
+question:"Berapa nilai dari 5 + 5 × 5 - 5 ÷ 5?",
+options:["25","29","20","45"],
+answer:1,
+explanation:"Perkalian dan pembagian dikerjakan terlebih dahulu: 5 + 25 - 1 = 29."
+},
+
+{
+category:"Matematika",
+difficulty:"medium",
+question:"Umur Ayah 4 kali umur anak. Jumlah umur mereka 50 tahun. Berapa umur Ayah?",
+options:["30 tahun","40 tahun","45 tahun","35 tahun"],
+answer:1,
+explanation:"4x + x = 50. Maka x = 10 dan umur Ayah = 40 tahun."
+},
+
+{
+category:"Spasial",
+difficulty:"easy",
+question:"Sebuah kubus memiliki 6 sisi. Jika 2 sisi berlawanan dicat hitam, berapa sisi yang tetap putih?",
+options:["2","4","3","5"],
+answer:1,
+explanation:"6 - 2 = 4 sisi."
+},
+
+{
+category:"Deret Huruf",
+difficulty:"easy",
+question:"Tentukan huruf selanjutnya: A, D, G, J, ...",
+options:["K","L","M","N"],
+answer:2,
+explanation:"Setiap huruf maju 3 posisi."
+},
+
+{
+category:"Deret Huruf",
+difficulty:"easy",
+question:"Tentukan huruf berikutnya: Z, X, V, T, ...",
+options:["P","Q","R","S"],
+answer:2,
+explanation:"Huruf mundur 2 posisi setiap langkah."
+},
+
+{
+category:"Pola Simbol",
+difficulty:"hard",
+question:"Jika [2 | 3 = 13] dan [3 | 4 = 25], maka [4 | 5 = ?]",
+options:["35","41","30","45"],
+answer:1,
+explanation:"Pola a² + b². Jadi 4² + 5² = 41."
+},
+
+{
+category:"Spasial",
+difficulty:"medium",
+question:"Jika kertas dilipat dua sebanyak 3 kali, menjadi berapa bagian saat dibuka?",
+options:["6","8","12","16"],
+answer:1,
+explanation:"Setiap lipatan menggandakan jumlah bagian. 2³ = 8."
+},
+
+{
+category:"Master Logika",
+difficulty:"hard",
+question:"Jika setiap orang berjabat tangan sekali dengan orang lain dan terjadi 10 jabat tangan, berapa orang dalam kelompok?",
+options:["4","5","6","7"],
+answer:1,
+explanation:"Rumus n(n-1)/2 = 10. Maka n = 5."
+},
+
+{
+category:"Deret Angka",
+difficulty:"easy",
+question:"Tentukan angka berikutnya: 7, 14, 28, 56, ...",
+options:["84","96","112","120"],
+answer:2,
+explanation:"Setiap angka dikalikan 2. 56 × 2 = 112."
+},
+
+{
+category:"Deret Angka",
+difficulty:"hard",
+question:"Tentukan angka berikutnya: 100, 90, 81, 73, 66, ...",
+options:["60","59","58","61"],
+answer:0,
+explanation:"Selisih -10, -9, -8, -7, sehingga berikutnya -6. 66 - 6 = 60."
+},
+
+{
+category:"Deret Angka",
+difficulty:"hard",
+question:"Tentukan angka berikutnya: 1, 2, 6, 24, 120, ...",
+options:["240","360","720","840"],
+answer:2,
+explanation:"Pola faktorial. 6! = 720."
+},
+
+{
+category:"Deret Angka",
+difficulty:"hard",
+question:"Tentukan angka berikutnya: 2, 5, 10, 17, 26, ...",
+options:["35","36","37","38"],
+answer:2,
+explanation:"Selisih +3, +5, +7, +9, kemudian +11. Hasilnya 37."
+},
+
+{
+category:"Logika",
+difficulty:"medium",
+question:"Semua A adalah B. Semua B adalah C. Jika X adalah A, maka...",
+options:[
+"X bukan C",
+"X adalah C",
+"X mungkin bukan B",
+"X pasti bukan A"
+],
+answer:1,
+explanation:"Jika A termasuk B dan B termasuk C, maka A juga termasuk C."
+},
+
+{
+category:"Logika",
+difficulty:"medium",
+question:"Jika semua mawar adalah bunga dan sebagian bunga berwarna merah, kesimpulan yang pasti adalah...",
+options:[
+"Semua mawar merah",
+"Tidak ada mawar merah",
+"Mawar termasuk bunga",
+"Semua bunga adalah mawar"
+],
+answer:2,
+explanation:"Kesimpulan langsung dari premis adalah mawar termasuk bunga."
+},
+
+{
+category:"Matematika",
+difficulty:"easy",
+question:"Jika 5x = 45, berapakah x?",
+options:["7","8","9","10"],
+answer:2,
+explanation:"45 ÷ 5 = 9."
+},
+
+{
+category:"Matematika",
+difficulty:"easy",
+question:"Sebuah barang seharga Rp80.000 mendapat diskon 25%. Berapa harga setelah diskon?",
+options:[
+"Rp55.000",
+"Rp60.000",
+"Rp65.000",
+"Rp70.000"
+],
+answer:1,
+explanation:"Diskon 25% dari Rp80.000 adalah Rp20.000. Harga akhir Rp60.000."
+},
+
+{
+category:"Matematika",
+difficulty:"easy",
+question:"Jika 2x + 8 = 20, maka x = ...",
+options:["4","5","6","7"],
+answer:2,
+explanation:"2x = 12 sehingga x = 6."
+},
+
+{
+category:"Matematika",
+difficulty:"easy",
+question:"Sebuah persegi memiliki sisi 9 cm. Berapa luasnya?",
+options:["18 cm²","36 cm²","72 cm²","81 cm²"],
+answer:3,
+explanation:"9 × 9 = 81 cm²."
+},
+
+{
+category:"Analogi",
+difficulty:"easy",
+question:"Panas : Dingin = Besar : ...",
+options:["Tinggi","Kecil","Panjang","Lebar"],
+answer:1,
+explanation:"Besar berlawanan dengan kecil."
+},
+
+{
+category:"Analogi",
+difficulty:"easy",
+question:"Kaki : Berjalan = Tangan : ...",
+options:["Melihat","Mendengar","Memegang","Berbicara"],
+answer:2,
+explanation:"Kaki digunakan untuk berjalan dan tangan untuk memegang."
+},
+
+{
+category:"Spasial",
+difficulty:"easy",
+question:"Sebuah kubus memiliki berapa rusuk?",
+options:["6","8","12","16"],
+answer:2,
+explanation:"Kubus memiliki 12 rusuk."
+},
+
+{
+category:"Spasial",
+difficulty:"easy",
+question:"Sebuah balok memiliki berapa titik sudut?",
+options:["6","8","10","12"],
+answer:1,
+explanation:"Balok memiliki 8 titik sudut."
+},
+
+{
+category:"Pola",
+difficulty:"medium",
+question:"Jika 2 → 6, 3 → 12, 4 → 20, maka 5 → ...",
+options:["25","30","35","40"],
+answer:1,
+explanation:"Pola n × (n+1). Jadi 5 × 6 = 30."
+},
+
+{
+category:"Pola",
+difficulty:"hard",
+question:"Jika 3 → 10, 4 → 17, 5 → 26, maka 6 → ...",
+options:["35","36","37","38"],
+answer:2,
+explanation:"Pola n² + 1. Jadi 6² + 1 = 37."
+},
+
+{
+category:"Deret Huruf",
+difficulty:"easy",
+question:"Tentukan huruf berikutnya: B, E, H, K, ...",
+options:["L","M","N","O"],
+answer:2,
+explanation:"Setiap huruf maju 3 posisi: B-E-H-K-N."
+},
+
+{
+category:"Logika",
+difficulty:"easy",
+question:"Ada 5 burung di pohon. 2 burung terbang. Berapa burung yang tersisa di pohon?",
+options:["2","3","4","5"],
+answer:1,
+explanation:"5 - 2 = 3."
+},
+
+{
+category:"Matematika",
+difficulty:"hard",
+question:"Jika 12 pekerja menyelesaikan pekerjaan dalam 10 hari dengan kecepatan sama, secara ideal 6 pekerja membutuhkan berapa hari?",
+options:["5","10","15","20"],
+answer:3,
+explanation:"Jumlah pekerja berbanding terbalik dengan waktu. Setengah pekerja membutuhkan dua kali waktu, yaitu 20 hari."
+},
+
+{
+category:"Master Logika",
+difficulty:"medium",
+question:"Sebuah jam menunjukkan pukul 03.00. Berapa besar sudut antara jarum jam dan jarum menit?",
+options:["30°","60°","90°","120°"],
+answer:2,
+explanation:"Pada pukul 03.00 sudut antara kedua jarum adalah 90°."
+}
+
+];
+
+
+/* =====================================================
+   VARIABLES
+===================================================== */
+
+let currentQuestion = 0;
+
+let answers =
+    new Array(questions.length).fill(null);
+
+let timerInterval = null;
+
+let timeLeft = 30 * 60;
+
+
+/* =====================================================
+   DIFFICULTY WEIGHT
+===================================================== */
+
+const difficultyWeight = {
+
+    easy:1,
+
+    medium:2,
+
+    hard:3
+
+};
+
+
+/* =====================================================
+   START
+===================================================== */
+
+function startTest(){
+
+    const name =
+        document
+        .getElementById("nameInput")
+        .value
+        .trim();
+
+    const error =
+        document.getElementById("nameError");
+
+
+    if(!name){
+
+        error.style.display="block";
+
+        document
+        .getElementById("nameInput")
+        .focus();
+
+        return;
+    }
+
+
+    error.style.display="none";
+
+
+    document
+    .getElementById("headerName")
+    .innerText=name;
+
+
+    document
+    .getElementById("userBadge")
+    .style.display="block";
+
+
+    currentQuestion=0;
+
+    answers =
+        new Array(questions.length).fill(null);
+
+    timeLeft=30*60;
+
+
+    document
+    .getElementById("landingPage")
+    .style.display="none";
+
+
+    document
+    .getElementById("resultPage")
+    .style.display="none";
+
+
+    document
+    .getElementById("quizPage")
+    .style.display="block";
+
+
+    loadQuestion();
+
+    startTimer();
+}
+
+
+/* =====================================================
+   TIMER
+===================================================== */
+
+function startTimer(){
+
+    clearInterval(timerInterval);
+
+    updateTimer();
+
+
+    timerInterval =
+    setInterval(function(){
+
+        timeLeft--;
+
+        updateTimer();
+
+
+        if(timeLeft<=0){
+
+            clearInterval(timerInterval);
+
+            finishTest(true);
+
+        }
+
+    },1000);
+
+}
+
+
+function updateTimer(){
+
+    const timer =
+        document.getElementById("timer");
+
+
+    const minutes =
+        Math.floor(timeLeft/60);
+
+
+    const seconds =
+        timeLeft%60;
+
+
+    timer.innerText =
+        String(minutes).padStart(2,"0")
+        + ":"
+        + String(seconds).padStart(2,"0");
+
+
+    timer.classList.remove(
+        "warning",
+        "danger"
+    );
+
+
+    if(timeLeft<=60){
+
+        timer.classList.add("danger");
+
+    }
+
+    else if(timeLeft<=300){
+
+        timer.classList.add("warning");
+
+    }
+
+}
+
+
+/* =====================================================
+   LOAD QUESTION
+===================================================== */
+
+function loadQuestion(){
+
+    const q =
+        questions[currentQuestion];
+
+
+    const area =
+        document.getElementById("questionArea");
+
+
+    area.classList.remove(
+        "question-animation"
+    );
+
+
+    void area.offsetWidth;
+
+
+    area.classList.add(
+        "question-animation"
+    );
+
+
+    document
+    .getElementById("category")
+    .innerText=q.category;
+
+
+    document
+    .getElementById("difficulty")
+    .innerText=
+        q.difficulty.toUpperCase();
+
+
+    document
+    .getElementById("currentNumber")
+    .innerText=
+        currentQuestion+1;
+
+
+    document
+    .getElementById("totalNumber")
+    .innerText=
+        questions.length;
+
+
+    document
+    .getElementById("questionTitle")
+    .innerText=q.question;
+
+
+    const percent =
+        ((currentQuestion+1)
+        /questions.length)*100;
+
+
+    document
+    .getElementById("progressBar")
+    .style.width=
+        percent+"%";
+
+
+    document
+    .getElementById("progressPercent")
+    .innerText=
+        Math.round(percent)+"%";
+
+
+    const options =
+        document.getElementById("options");
+
+
+    options.innerHTML="";
+
+
+    q.options.forEach(function(option,index){
+
+        const button =
+            document.createElement("button");
+
+
+        button.className="option";
+
+
+        if(
+            answers[currentQuestion]
+            ===index
+        ){
+
+            button.classList.add("selected");
+
+        }
+
+
+        button.innerHTML=`
+
+            <div class="option-left">
+
+                <span class="option-letter">
+
+                    ${String.fromCharCode(65+index)}
+
+                </span>
+
+                <span>
+
+                    ${option}
+
+                </span>
+
+            </div>
+
+            <span class="radio">
+
+                ${
+                    answers[currentQuestion]===index
+                    ? '<i class="fa-solid fa-check"></i>'
+                    : ''
+                }
+
+            </span>
+
+        `;
+
+
+        button.onclick=function(){
+
+            selectAnswer(index);
+
+        };
+
+
+        options.appendChild(button);
+
+    });
+
+
+    document
+    .getElementById("prevButton")
+    .disabled=
+        currentQuestion===0;
+
+
+    const nextButton =
+        document.getElementById("nextButton");
+
+
+    if(
+        currentQuestion
+        ===questions.length-1
+    ){
+
+        nextButton.innerHTML=
+            `
+            Selesaikan
+            <i class="fa-solid fa-flag-checkered"></i>
+            `;
+
+    }
+
+    else{
+
+        nextButton.innerHTML=
+            `
+            Selanjutnya
+            <i class="fa-solid fa-arrow-right"></i>
+            `;
+
+    }
+
+}
+
+
+/* =====================================================
+   SELECT
+===================================================== */
+
+function selectAnswer(index){
+
+    answers[currentQuestion]=index;
+
+    loadQuestion();
+
+}
+
+
+/* =====================================================
+   NEXT
+===================================================== */
+
+function nextQuestion(){
+
+    if(
+        currentQuestion
+        <questions.length-1
+    ){
+
+        currentQuestion++;
+
+        loadQuestion();
+
+    }
+
+    else{
+
+        finishTest(false);
+
+    }
+
+}
+
+
+/* =====================================================
+   PREVIOUS
+===================================================== */
+
+function previousQuestion(){
+
+    if(currentQuestion>0){
+
+        currentQuestion--;
+
+        loadQuestion();
+
+    }
+
+}
+
+
+/* =====================================================
+   MODERN IQ ESTIMATION
+===================================================== */
+
+function calculateIQ(){
+
+    let earnedPoints=0;
+
+    let maximumPoints=0;
+
+
+    questions.forEach(function(q,index){
+
+        const weight =
+            difficultyWeight[q.difficulty];
+
+
+        maximumPoints += weight;
+
+
+        if(answers[index]===q.answer){
+
+            earnedPoints += weight;
+
+        }
+
+    });
+
+
+    const weightedPercent =
+        earnedPoints /
+        maximumPoints;
+
+
+    /*
+       NORMALISASI ESTIMASI
+
+       50% weighted score
+       dipetakan ke sekitar 100.
+
+       Rentang:
+       70 - 140
+
+       Ini bukan norma psikometrik resmi.
+    */
+
+
+    let iq;
+
+
+    if(weightedPercent<0.20){
+
+        iq =
+            70 +
+            (weightedPercent/0.20)*15;
+
+    }
+
+    else if(weightedPercent<0.40){
+
+        iq =
+            85 +
+            (
+                (weightedPercent-0.20)
+                /0.20
+            )*10;
+
+    }
+
+    else if(weightedPercent<0.60){
+
+        iq =
+            95 +
+            (
+                (weightedPercent-0.40)
+                /0.20
+            )*10;
+
+    }
+
+    else if(weightedPercent<0.80){
+
+        iq =
+            105 +
+            (
+                (weightedPercent-0.60)
+                /0.20
+            )*15;
+
+    }
+
+    else{
+
+        iq =
+            120 +
+            (
+                (weightedPercent-0.80)
+                /0.20
+            )*20;
+
+    }
+
+
+    iq=Math.round(
+        Math.max(
+            70,
+            Math.min(140,iq)
+        )
+    );
+
+
+    return {
+
+        iq:iq,
+
+        weightedPercent:
+            weightedPercent
+
+    };
+
+}
+
+
+/* =====================================================
+   FINISH
+===================================================== */
+
+function finishTest(timeUp=false){
+
+    clearInterval(timerInterval);
+
+
+    let correct=0;
+
+
+    questions.forEach(function(q,index){
+
+        if(
+            answers[index]===q.answer
+        ){
+
+            correct++;
+
+        }
+
+    });
+
+
+    const total =
+        questions.length;
+
+
+    const wrong =
+        total-correct;
+
+
+    const accuracy =
+        Math.round(
+            (correct/total)*100
+        );
+
+
+    const iqResult =
+        calculateIQ();
+
+
+    const iq =
+        iqResult.iq;
+
+
+    let category="";
+
+    let description="";
+
+
+    if(iq>=130){
+
+        category="Sangat Tinggi";
+
+        description=
+            "Performa pada rangkaian soal ini menunjukkan hasil estimasi yang sangat tinggi.";
+
+    }
+
+    else if(iq>=120){
+
+        category="Tinggi";
+
+        description=
+            "Performa pada rangkaian soal ini menunjukkan hasil estimasi yang tinggi.";
+
+    }
+
+    else if(iq>=110){
+
+        category="Di Atas Rata-rata";
+
+        description=
+            "Performa pada rangkaian soal ini berada pada kisaran di atas rata-rata.";
+
+    }
+
+    else if(iq>=90){
+
+        category="Rata-rata";
+
+        description=
+            "Performa pada rangkaian soal ini berada pada kisaran rata-rata.";
+
+    }
+
+    else if(iq>=80){
+
+        category="Di Bawah Rata-rata";
+
+        description=
+            "Hasil menunjukkan masih terdapat beberapa bagian yang dapat ditingkatkan.";
+
+    }
+
+    else{
+
+        category="Rentang Rendah";
+
+        description=
+            "Hasil menunjukkan bahwa beberapa jenis penalaran masih dapat dilatih.";
+
+    }
+
+
+    const name =
+        document
+        .getElementById("headerName")
+        .innerText;
+
+
+    document
+    .getElementById("resultName")
+    .innerText=
+        "Peserta: "+name;
+
+
+    document
+    .getElementById("score")
+    .innerText=iq;
+
+
+    document
+    .getElementById("categoryResult")
+    .innerText=category;
+
+
+    document
+    .getElementById("resultDescription")
+    .innerText=
+        timeUp
+        ?
+        "Waktu 30 menit telah habis. "
+        +description
+        :
+        description;
+
+
+    document
+    .getElementById("correctStat")
+    .innerText=
+        correct;
+
+
+    document
+    .getElementById("wrongStat")
+    .innerText=
+        wrong;
+
+
+    document
+    .getElementById("accuracyStat")
+    .innerText=
+        accuracy+"%";
+
+
+    const angle =
+        Math.round(
+            (correct/total)*360
+        );
+
+
+    document
+    .getElementById("scoreRing")
+    .style.setProperty(
+        "--score-angle",
+        angle+"deg"
+    );
+
+
+    generateAnalysis();
+
+
+    document
+    .getElementById("quizPage")
+    .style.display="none";
+
+
+    document
+    .getElementById("resultPage")
+    .style.display="block";
+
+
+    document
+    .getElementById("resultPage")
+    .classList.add(
+        "fade-page"
+    );
+
+}
+
+
+/* =====================================================
+   CATEGORY ANALYSIS
+===================================================== */
+
+function generateAnalysis(){
+
+    const container =
+        document.getElementById(
+            "analysisContainer"
+        );
+
+
+    container.innerHTML="";
+
+
+    const categories={};
+
+
+    questions.forEach(function(q,index){
+
+        if(!categories[q.category]){
+
+            categories[q.category]={
+                total:0,
+                correct:0
+            };
+
+        }
+
+
+        categories[q.category].total++;
+
+
+        if(
+            answers[index]===q.answer
+        ){
+
+            categories[q.category].correct++;
+
+        }
+
+    });
+
+
+    Object.keys(categories)
+    .forEach(function(category){
+
+        const data =
+            categories[category];
+
+
+        const percentage =
+            Math.round(
+                (
+                    data.correct /
+                    data.total
+                )*100
+            );
+
+
+        const row =
+            document.createElement("div");
+
+
+        row.className=
+            "analysis-row";
+
+
+        row.innerHTML=`
+
+            <div class="analysis-top">
+
+                <span>
+                    ${category}
+                </span>
+
+                <span>
+                    ${data.correct}/${data.total}
+                    • ${percentage}%
+                </span>
+
+            </div>
+
+            <div class="analysis-track">
+
+                <div
+                class="analysis-bar"
+                style="width:${percentage}%">
+
+                </div>
+
+            </div>
+
+        `;
+
+
+        container.appendChild(row);
+
+    });
+
+}
+
+
+/* =====================================================
+   REVIEW
+===================================================== */
+
+function openReview(){
+
+    const container =
+        document.getElementById(
+            "reviewContainer"
+        );
+
+
+    container.innerHTML="";
+
+
+    questions.forEach(function(q,index){
+
+        const userAnswer =
+            answers[index];
+
+
+        const correct =
+            userAnswer===q.answer;
+
+
+        const card =
+            document.createElement("div");
+
+
+        card.className=
+            "review-card";
+
+
+        let optionsHTML="";
+
+
+        q.options.forEach(
+            function(option,optIndex){
+
+                let className=
+                    "review-option";
+
+
+                if(
+                    optIndex===q.answer
+                ){
+
+                    className+=" correct";
+
+                }
+
+
+                if(
+                    optIndex===userAnswer &&
+                    userAnswer!==q.answer
+                ){
+
+                    className+=" wrong";
+
+                }
+
+
+                optionsHTML+=`
+
+                    <div
+                    class="${className}">
+
+                        ${String.fromCharCode(65+optIndex)}.
+                        ${option}
+
+                        ${
+                            optIndex===q.answer
+                            ? " ✓"
+                            : ""
+                        }
+
+                        ${
+                            optIndex===userAnswer &&
+                            userAnswer!==q.answer
+                            ? " ✕"
+                            : ""
+                        }
+
+                    </div>
+
+                `;
+
+            }
+        );
+
+
+        card.innerHTML=`
+
+            <div
+            style="
+            display:flex;
+            justify-content:space-between;
+            gap:10px;
+            ">
+
+                <span
+                style="
+                color:#777;
+                font-size:11px;
+                font-weight:bold;
+                ">
+
+                    Soal ${index+1}
+                    • ${q.category}
+                    • ${q.difficulty}
+
+                </span>
+
+
+                <span
+                style="
+                color:${correct?"#fff":"#ff718b"};
+                font-size:11px;
+                font-weight:bold;
+                ">
+
+                    ${
+                        correct
+                        ? "BENAR"
+                        : "SALAH / KOSONG"
+                    }
+
+                </span>
+
+            </div>
+
+
+            <h4>
+
+                ${q.question}
+
+            </h4>
+
+
+            ${optionsHTML}
+
+
+            <div class="explanation">
+
+                <strong>
+                    Pembahasan:
+                </strong>
+
+                <br>
+
+                ${q.explanation}
+
+            </div>
+
+        `;
+
+
+        container.appendChild(card);
+
+    });
+
+
+    document
+    .getElementById("reviewModal")
+    .classList.add("show");
+
+}
+
+
+/* =====================================================
+   CLOSE REVIEW
+===================================================== */
+
+function closeReview(){
+
+    document
+    .getElementById("reviewModal")
+    .classList.remove("show");
+
+}
+
+
+/* =====================================================
+   RESTART
+===================================================== */
+
+function restartTest(){
+
+    clearInterval(timerInterval);
+
+
+    document
+    .getElementById("resultPage")
+    .style.display="none";
+
+
+    document
+    .getElementById("landingPage")
+    .style.display="block";
+
+
+    document
+    .getElementById("userBadge")
+    .style.display="none";
+
+
+    document
+    .getElementById("nameInput")
+    .value="";
+
+
+    currentQuestion=0;
+
+
+    answers =
+        new Array(questions.length)
+        .fill(null);
+
+
+    timeLeft=30*60;
+
+}
+
+
+/* =====================================================
+   HOME
+===================================================== */
+
+function goHome(){
+
+    clearInterval(timerInterval);
+
+
+    document
+    .getElementById("quizPage")
+    .style.display="none";
+
+
+    document
+    .getElementById("resultPage")
+    .style.display="none";
+
+
+    document
+    .getElementById("landingPage")
+    .style.display="block";
+
+
+    document
+    .getElementById("userBadge")
+    .style.display="none";
+
+
+    currentQuestion=0;
+
+
+    answers =
+        new Array(questions.length)
+        .fill(null);
+
+
+    timeLeft=30*60;
+
+}
+
+
+/* =====================================================
+   KEYBOARD
+===================================================== */
+
+document
+.getElementById("nameInput")
+.addEventListener(
+    "keydown",
+    function(e){
+
+        if(e.key==="Enter"){
+
+            startTest();
+
+        }
+
+    }
+);
+
+
+document.addEventListener(
+    "keydown",
+    function(e){
+
+        if(e.key==="Escape"){
+
+            closeReview();
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+</html>

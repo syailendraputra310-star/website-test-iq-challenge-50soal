@@ -1,0 +1,104 @@
+
+:root {
+  --bg: #030813;
+  --panel: #081427;
+  --border: #153a67;
+  --blue: #08baff;
+  --purple: #7945ff;
+  --text: #edf7ff;
+  --muted: #91abc8;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  color: var(--text);
+  background: radial-gradient(ellipse at top, #10214a, var(--bg) 65%);
+  font-family: Arial, sans-serif;
+}
+.topbar {
+  min-height: 75px;
+  padding: 14px 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  border-bottom: 1px solid var(--border);
+  background: #050b17;
+}
+.brand { display: flex; align-items: center; gap: 12px; }
+.logo {
+  height: 45px; width: 45px; display: grid; place-items: center;
+  border: 2px solid var(--blue); border-radius: 50%;
+  color: var(--blue); font-weight: 900;
+  box-shadow: 0 0 20px #08baff33;
+}
+.brand b { font-size: 20px; letter-spacing: 1px; }
+.brand b span { color: var(--blue); }
+.brand small { display: block; margin-top: 5px; color: var(--muted); font-size: 9px; letter-spacing: 2px; }
+.online { font-size: 11px; color: var(--muted); }
+.online i {
+  display: inline-block; width: 7px; height: 7px;
+  background: #37e8a3; border-radius: 50%; margin-right: 7px;
+}
+main { width: min(1250px, 92%); margin: auto; }
+.hero { padding: 35px 0 25px; }
+.eyebrow, .field-label { color: var(--blue); font-size: 11px; letter-spacing: 2px; font-weight: bold; }
+h1 { font-size: clamp(34px, 6vw, 53px); margin: 15px 0; }
+h1 span { color: var(--blue); text-shadow: 0 0 20px #08baff40; }
+p { color: var(--muted); line-height: 1.7; }
+.grid { display: grid; grid-template-columns: 340px minmax(0, 1fr); gap: 18px; }
+.panel {
+  min-width: 0; padding: 22px;
+  border: 1px solid var(--border); border-radius: 16px;
+  background: linear-gradient(145deg, #09172d, #050b16);
+  box-shadow: 0 10px 35px #0003;
+}
+.panel-heading { font-size: 12px; letter-spacing: 2px; color: var(--blue); }
+.panel-heading span { font-size: 20px; margin-right: 8px; }
+.device { display: flex; align-items: center; gap: 13px; margin: 25px 0; }
+.device-icon {
+  width: 55px; height: 60px; display: grid; place-items: center;
+  border: 1px solid #275486; border-radius: 12px;
+  color: var(--blue); font-size: 29px;
+}
+.device b { font-size: 14px; }
+.device small { display: block; color: var(--muted); margin-top: 8px; }
+.status-card {
+  border: 1px solid #1b4777; border-radius: 12px;
+  padding: 15px; background: #071d36; margin-bottom: 18px;
+}
+.status-card small { color: var(--blue); font-size: 10px; letter-spacing: 1px; }
+.status-card h3 { font-size: 17px; margin: 12px 0 6px; }
+.status-card p { font-size: 12px; margin-bottom: 0; }
+.btn {
+  width: 100%; padding: 13px; border-radius: 9px;
+  margin-bottom: 10px; font-weight: bold; cursor: pointer;
+}
+.primary { background: linear-gradient(100deg, #087cff, #00c7f5); color: white; border: 0; }
+.secondary { background: #0b172a; color: #b5dfff; border: 1px solid #214b7c; }
+.btn:hover { filter: brightness(1.15); }
+.field-label { margin-top: 20px; font-size: 10px; }
+.coordinate { margin-top: 8px; color: #d5e8ff; font-size: 13px; overflow-wrap: anywhere; }
+.notice {
+  padding: 12px; margin-top: 18px; border-left: 3px solid var(--purple);
+  background: #12152c; color: #aebcda; font-size: 12px; line-height: 1.7;
+}
+.map-panel { padding: 13px; }
+.map-heading { padding: 5px 5px 14px; display: flex; justify-content: space-between; gap: 10px; align-items: center; }
+.map-heading small { color: var(--blue); letter-spacing: 2px; font-size: 10px; }
+.map-heading h2 { font-size: 20px; margin: 8px 0 0; }
+.demo-badge { font-size: 9px; color: #b7c8df; border: 1px solid #244567; padding: 8px; border-radius: 6px; }
+#map { width: 100%; height: 480px; border-radius: 10px; background: #0a1930; }
+.map-footer { display: flex; justify-content: space-between; gap: 10px; padding: 10px 3px 0; color: var(--muted); font-size: 10px; }
+.instructions { margin: 20px 0 35px; }
+.instructions h2 { font-size: 20px; }
+.instructions li { color: #c0d4ec; line-height: 1.9; font-size: 13px; }
+footer { padding: 22px; text-align: center; border-top: 1px solid var(--border); color: #647d9b; font-size: 10px; letter-spacing: 2px; }
+@media(max-width: 800px) {
+  .grid { grid-template-columns: 1fr; }
+  #map { height: 380px; }
+  .topbar { padding: 13px 4%; }
+  .brand b { font-size: 17px; }
+  .online { font-size: 9px; }
+  .panel { padding: 17px; }
+}
